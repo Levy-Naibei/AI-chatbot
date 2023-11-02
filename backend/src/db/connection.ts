@@ -1,6 +1,6 @@
-import { connect } from "mongoose";
+import { connect, disconnect } from "mongoose";
 
-const dbConnection = async () => {
+const dbConnect = async () => {
     try {
         await connect(process.env.MONGODB_URL);
     } catch (error) {
@@ -9,4 +9,15 @@ const dbConnection = async () => {
     }
 }
 
-export default { dbConnection }
+// if an issue occurs in the app, we also disconnect 
+// db connection - security!
+const dbDisconnect = async () => {
+    try {
+        await disconnect()
+    } catch (error) {
+        console.log(error);
+        throw new Error("Cannot disconnect from MongoDB");
+    }
+}
+
+export default { dbConnect, dbDisconnect }
