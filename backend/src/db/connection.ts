@@ -20,4 +20,4 @@ const dbDisconnect = async () => {
     }
 }
 
-export default { dbConnect, dbDisconnect }
+export { dbConnect, dbDisconnect }

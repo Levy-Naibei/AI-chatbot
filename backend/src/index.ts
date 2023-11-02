@@ -1,4 +1,12 @@
 import app from "./app.js"
+import { dbConnect } from "./db/connection.js";
 
 // connections and listeners
-app.listen(5000, () => console.log("Server running on port 5000"))
+const PORT = process.env.PORT || 5000;
+
+dbConnect().then(() => {
+    app.listen(PORT, () =>
+        console.log(`Connected to MongoDb & Server running on port ${PORT}`));
+}).catch((error) => {
+    console.log(error);
+})
