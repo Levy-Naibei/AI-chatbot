@@ -8,13 +8,15 @@ config()
 
 const app = express();
 
+// middlewares
+// this middleware should be on first 
+// line after express app initialization
+app.use(express.json())
+
 // in dev only
 app.use(morgan("dev"))
 
 // register routes
 app.use("/api/v1", appRouter);
-
-// middlewares
-app.use(express.json())
 
 export default app;
