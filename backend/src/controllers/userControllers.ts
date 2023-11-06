@@ -59,3 +59,13 @@ export const getUsers = async (_: any, res: Response) => {
         return res.status(200).json({ message: "ERROR", cause: error?.message })
     }
 }
+
+// // fetch single user
+// export const getUser = (id: string) => {
+
+// }
+
+// // delete user - only by admin
+// export const deleteUser = (id: string) => {
+
+// }
