@@ -24,3 +24,27 @@ export const signup = async (
         return res.status(200).json({ message: "ERROR", cause: error?.message })
     }
 }
+
+// login user controller
+export const login = async (
+    req: Request,
+    res: Response,
+    next: NextFunction) => {
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ email: email });
+        if (!user) {
+            return res.status(401).send("User does not exist!");
+        }
+        const isCorrectPass = await compare(password, user.password);
+        if (!isCorrectPass) {
+            return res.status(403).send("Incorect password")
+        } else {
+            return res.status(200).json({ message: "Login success!", id: user._id.toString() });
+        }
+
+    } catch (error) {
+        console.log(error?.message);
+        return res.status(200).json({ message: "ERROR", cause: error?.message })
+    }
+}
