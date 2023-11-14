@@ -25,7 +25,13 @@ const userSchema = new mongoose.Schema({
         require: true,
         unique: true
     },
+    role: {
+        type: String,
+        require: true
+    },
     chats: [chatsSchema]
-});
+},
+    { timestamps: true }
+);
 
 export default mongoose.model("User", userSchema);
