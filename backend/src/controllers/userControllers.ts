@@ -5,7 +5,7 @@ import { generateToken } from "../utils/tokenGen.js";
 import { COOKIE_NAME } from "../utils/constants.js";
 
 // register user controller
-export const signup = async(
+export const signup = async (
     req: Request,
     res: Response,
     next: NextFunction) => {
@@ -53,7 +53,7 @@ export const signup = async(
 }
 
 // login user controller
-export const login = async(
+export const login = async (
     req: Request,
     res: Response,
     next: NextFunction) => {
@@ -101,7 +101,7 @@ export const login = async(
 }
 
 // fetch users from db
-export const getUsers = async(_: any, res: Response) => {
+export const getUsers = async (_: any, res: Response) => {
     try {
         const users = await User.find();
         return res.status(200).json({ message: "OK", users });
