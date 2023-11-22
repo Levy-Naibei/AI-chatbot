@@ -1,13 +1,24 @@
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Chat from "./pages/Chat";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
-
   return (
     <>
       <main>
-        AI chatbot
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
     </>
-  )
-}
+  );
+};
 
 export default App;
